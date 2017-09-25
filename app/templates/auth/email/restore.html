@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <p>
+        Dear {{ user.username }},
+        You have use restore password feature!
+        To restore your account password please click on the following link:
+        {{ url_for('auth.restore', token=token, _external=True) }}
+    </p>
+    <p>
+        Sincerely, The Microblog Team
+        Note: replies to this email address are not monitored.
+    </p>
+</div>
+{% endblock %}

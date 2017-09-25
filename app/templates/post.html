@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Microblog - Post{% endblock %}
+
+{% block page_content %}
+
+{% include '_posts.html' %}
+<h4>Comments</h4>
+<div>
+    {% if current_user.can(Permission.COMMENT) %}
+    {{ wtf.quick_form(form) }}
+    {% endif %}
+</div>
+{% include "_comments.html" %}
+<div class="pagination center-block" style="width: fit-content">
+    {{ macros.pagination_widget(pagination, '.post', id=posts[0].id, fragment='#comments') }}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }} 
+{# Include PageDown libraries, for show Markdown Preview. #}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Main{% endblock %}
+
+{% block page_content %}
+<div>
+    <h1>Hello,
+    {% if current_user.is_authenticated %}
+        {{ current_user.username }}
+    {% else %}
+        Stranger!
+    </h1>
+    {% endif %}
+</div>
+<div>
+    {% if current_user.can(Permission.WRITE_ARTICLES) %}
+    {{ wtf.quick_form(form) }}
+    {% endif %}
+</div>
+
+<br>
+{% if current_user.is_authenticated %}
+<ul class="nav nav-tabs" id="nav-tabs">
+    <li role="presentation"><a href="{{ url_for('.show_all') }}">All</a></li>
+    <li role="presentation"><a href="{{ url_for('.show_followed') }}">Followers</a></li>
+</ul>
+{% endif %}
+
+{% include '_posts.html' %}
+<div class="pagination center-block" style="width: fit-content">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }} 
+{# Include PageDown libraries, for show Markdown Preview. #}
+{{ pagedown.include_pagedown() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

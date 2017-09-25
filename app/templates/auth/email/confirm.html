@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <p>
+        Dear {{ user.username }},
+        Welcome to Microblog!
+        To confirm your account please click on the following link:
+        {{ url_for('auth.confirm', token=token, _external=True) }}
+    </p>
+    <p>
+        Sincerely, The Microblog Team
+        Note: replies to this email address are not monitored.
+    </p>
+</div>
+{% endblock %}

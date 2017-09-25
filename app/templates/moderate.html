@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Microblog - Comment Moderation{% endblock %}
+
+{% block page_content %}
+    <div>
+        <h1>Comment Moderation</h1>
+    </div>
+    {% set moderate = True %}
+    {% include '_comments.html' %}
+    {% if pagination %}
+        <div class="pagination center-block" style="width: fit-content">
+            {{ macros.pagination_widget(pagination, '.moderate') }}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+<table class="table table-hover">
+    {% for userobj in follows %}
+        {% if userobj.user.username != user.username %}
+        <tr>
+            <td>
+                <div class="profile-thumbnail">
+                    <a href="{{ url_for('.user', username=userobj.user.username) }}">
+                        <img class="img-rounded profile-thumbnail" src="{{ userobj.user.gravatar(size=40) }}">
+                    </a>
+                </div>
+                <div class="username">
+                    <a href="{{ url_for('.user', username=userobj.user.username) }}">
+                        {{ userobj.user.username }}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="usertimestamp">
+                    {{ moment(userobj.timestamp).fromNow() }}
+                </div>
+            </td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}
+    {{ title + user.username }}
+{% endblock %}
+
+{% block page_content %}
+    <h1>{{ title + " " + user.username }}</h1>
+    {% include "_userlist.html" %}
+    <div class="pagination center-block" style="width: fit-content">
+        {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
+    </div>
+{% endblock %}

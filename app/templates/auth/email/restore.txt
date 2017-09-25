@@ -1,0 +1,11 @@
+Dear {{ user.username }},
+
+You have use restore password feature!
+
+To restore your account password please click on the following link:
+
+{{ url_for('auth.restore', token=token, _external=True) }}
+
+Sincerely,
+
+The Microblog Team
