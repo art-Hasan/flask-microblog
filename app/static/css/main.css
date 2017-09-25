@@ -1,0 +1,60 @@
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.profile-thumbnail {
+    float: left;
+    display: inline-table;
+    /*margin-right: 20px;*/
+}
+
+.page-header-bottom {
+    /*padding-bottom: 15px;*/
+}
+
+.posts, .comments {
+    list-style-type: none;
+    padding: 0px;
+    margin: 15px 0 0 0;
+    display: grid;
+}
+
+.post, .comment {
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.post:hover, .comment:hover {
+    background-color: #f0f0f0;
+}
+
+.post-date, .usertimestamp, .comment-date {
+    float: right;
+}
+
+.post-author, .username, .comment-author {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.post-body, .comment-body {
+    float: left;
+    width: 95%;
+    padding: 0 8px;
+}
+
+.post-footer, .comment-footer {
+    float: right;
+}
+
+.post-footer > a:hover, .comment-footer > a:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1001px) {
+    .post-body, .comment-body {
+        width: 85%;
+    }
+}
