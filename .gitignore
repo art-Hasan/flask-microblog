@@ -1,0 +1,13 @@
+#Complied source
+*.py[co]
+*.DS_*
+
+#Databases
+*.sqlite
+migrations
+
+#Virtualenv
+venv
+
+#Requirements
+requirements
